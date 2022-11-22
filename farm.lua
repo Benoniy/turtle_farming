@@ -5,6 +5,11 @@ local right_coord = 0
 local up_coord = 0
 local orientation = 1
 
+function print_pos()
+    local message = "x=" .. tostring(up_coord) .. ", y=" .. tostring(right_coord) .. ", r=" .. tostring(orientation)
+    modem.transmit(15, 43, message)
+end
+
 -- 0 is left, 1 is forward, 2 is right and 3 is back
 function change_orientation(turn_dir)
     if turnd_dir == 1 then
@@ -46,9 +51,9 @@ function dig_plane(sizeX, sizeZ, dig)
     
         turtle.suckDown()
         turtle.suckDown()
+        print_pos()
         
         if (x + 2) % 5 == 0 or x == sizeX then
-        
             
             if reverse_dir then
                 turn_left()
@@ -89,8 +94,7 @@ function dig_plane(sizeX, sizeZ, dig)
                 
                 tempZ = tempZ - 1
                 
-                local message = "x=" .. tostring(up_coord) .. ", y=" .. tostring(right_coord) .. ", r=" .. tostring(orientation)
-                modem.transmit(15, 43, message)
+                print_pos()
             end
             
             -- turn to front
