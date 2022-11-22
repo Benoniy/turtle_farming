@@ -73,13 +73,13 @@ function recover_seeds(sizeX, sizeZ)
             turtle.turnRight()
         end
             
-            -- travel the z row
+        -- travel the z row
         for z=1,sizeZ do
             turtle.suckDown()
             turtle.suckDown()
             turtle.forward()
         end
-            
+                                      
         -- turn to front
         if reverse_dir then
             turtle.turnRight()
