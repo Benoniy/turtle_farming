@@ -5,7 +5,7 @@ modem.open(15)
 
 
 monitor.clear()
-montior.setCursorPos(1,1)
+montior.setCursorPos(1, 1)
 
 
 local event, side, channel, replyChannel, message, distance
@@ -14,5 +14,5 @@ while true do
     monitor.write(message .. "\n")
     
     curs_y = curs_y + 1
-    montior.setCursorPos(1,curs_y)
+    montior.setCursorPos(1, curs_y)
 end
