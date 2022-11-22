@@ -25,12 +25,12 @@ function change_orientation(turn_dir)
     end
 end
 
-function turn_left()
+function makeTurnLeft()
     turtle.turnLeft()
     change_orientation(-1)
 end
 
-function turn_right()
+function makeTurnRight()
     turtle.turnRight()
     change_orientation(1)
 end
@@ -57,9 +57,9 @@ function dig_plane(sizeX, sizeZ, dig)
         if (x + 2) % 5 == 0 or x == sizeX then
             
             if reverse_dir then
-                turn_left()
+                makeTurnLeft()
             else
-                turn_right()
+                makeTurnRight()
             end
             
             -- travel the z row
@@ -100,10 +100,10 @@ function dig_plane(sizeX, sizeZ, dig)
             
             -- turn to front
             if reverse_dir then
-                turn_right()
+                makeTurnRight()
                 reverse_dir = false
             else
-                turn_left()
+                makeTurnLeft()
                 reverse_dir = true
             end
             
@@ -116,8 +116,8 @@ function dig_plane(sizeX, sizeZ, dig)
         
     end
     
-    turn_left()
-    turn_left()
+    makeTurnLeft()
+    makeTurnLeft()
     -- recover_seeds(sizeX, sizeZ + 1)
 end
 
