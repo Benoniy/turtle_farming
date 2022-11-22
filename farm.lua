@@ -66,7 +66,7 @@ function dig_plane(sizeX, sizeZ, dig)
             
             for z=1,sizeZ do
 
-                if (z + 2) % 5 == 0 and dig
+                if (right_coord + 2) % 5 == 0 and dig
                 then
                     turtle.digDown()
                 end
