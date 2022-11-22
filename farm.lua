@@ -62,7 +62,6 @@ function dig_plane(sizeX, sizeZ, dig)
             end
             
             -- travel the z row
-            local tempZ = sizeZ
             local tempModZ = mod_z
             
             for z=1,sizeZ do
@@ -73,7 +72,7 @@ function dig_plane(sizeX, sizeZ, dig)
                 end
                 
                 -- Clean up hanging column
-                if tempZ < 5 and mod_z > 0 and mod_z < 3 then
+                if z < 5 and mod_z > 0 and mod_z < 3 then
                     print(tempModZ)
                     if tempModZ == 0 then
                         turtle.digDown()
