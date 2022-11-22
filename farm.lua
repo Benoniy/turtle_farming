@@ -62,6 +62,12 @@ function dig_plane(sizeX, sizeZ, dig)
         turtle.suckDown()
         print_pos()
         
+        if dig_last_x and up_coord == sixeX then
+            dig = true
+        elseif up_coord == sixeX then
+            dig = false
+        end
+        
         if (x + 2) % 5 == 0 or x == sizeX then
             
             if reverse_dir then
@@ -72,10 +78,16 @@ function dig_plane(sizeX, sizeZ, dig)
             
             -- travel the z row
             for z=1,sizeZ do
-
+                
                 if (right_coord + 2) % 5 == 0 and dig then
                     turtle.digDown()
                 end  
+                
+                -- Clean up hanging column
+                if dig_last_z and right_coord == sizeZ + 1 and dig then
+                    turtle.digDown()
+                end
+                
                 turtle.suckDown()
                 turtle.suckDown()
                 turtle.forward()
@@ -87,7 +99,7 @@ function dig_plane(sizeX, sizeZ, dig)
                 end
                 
                 -- Clean up hanging column
-                if dig_last_z and right_coord == sizeZ + 1 then
+                if dig_last_z and right_coord == sizeZ + 1 and dig then
                     turtle.digDown()
                 end
                 
