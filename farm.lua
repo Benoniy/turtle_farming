@@ -1,4 +1,5 @@
 local modem = peripheral.find("modem")
+modem.open(43)
 
 local right_coord = 0
 local up_coord = 0
@@ -87,7 +88,9 @@ function dig_plane(sizeX, sizeZ, dig)
                 end
                 
                 tempZ = tempZ - 1
-                modem.transmit(15, 43, "x= " + tostring(up_coord) + ", y=" + tostring(right_coord) + ", r=" + tostring(orientation) )
+                
+                local message = "x= " + tostring(up_coord) + ", y=" + tostring(right_coord) + ", r=" + tostring(orientation)
+                modem.transmit(15, 43, message)
             end
             
             -- turn to front
