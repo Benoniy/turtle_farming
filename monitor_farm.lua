@@ -13,6 +13,11 @@ while true do
     event, side, channel, replyChannel, message, distance = os.pullEvent("modem_message")
     monitor.write(message .. "\n")
     
+    if curs_y == 30 then
+        monitor.clear()
+        curs_y = 0
+    end
+    
     curs_y = curs_y + 1
     monitor.setCursorPos(1, curs_y)
 end
