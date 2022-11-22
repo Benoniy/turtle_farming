@@ -71,8 +71,6 @@ function dig_plane(sizeX, sizeZ, dig)
             end
             
             -- travel the z row
-            local tempModZ = mod_z
-            
             for z=1,sizeZ do
 
                 if (right_coord + 2) % 5 == 0 and dig then
@@ -94,8 +92,6 @@ function dig_plane(sizeX, sizeZ, dig)
                 else
                     right_coord = right_coord + 1
                 end
-                
-                tempZ = tempZ - 1
                 
                 print_pos()
             end
