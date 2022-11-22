@@ -1,4 +1,4 @@
-local wireless = peripheral.find("modem")
+local modem = peripheral.find("modem")
 
 local right_coord = 0
 local up_coord = 0
@@ -8,12 +8,12 @@ local orientation = 1
 function change_orientation(turn_dir)
     if turnd_dir == 1 then
         orientation = orientation + 1
-    elseif turnd_dir == -1 then
+    elseif turnd_dir == -1
         orientation = orientation - 1
     end
     if orientation > 3 then
         orientation = 0
-    elseif orientation < 0 then
+    elseif orientation < 0
         orientation = 3
     end
 end
@@ -87,7 +87,7 @@ function dig_plane(sizeX, sizeZ, dig)
                 end
                 
                 tempZ = tempZ - 1
-                modem.transmit(15, 43, "l="tostring(up_coord) + ", r=" + tostring(right_coord))
+                modem.transmit(15, 43, "x= " + tostring(up_coord) + ", y=" + tostring(right_coord) + ", r=" + tostring(orientation) )
             end
             
             -- turn to front
