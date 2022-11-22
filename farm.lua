@@ -72,7 +72,7 @@ function dig_plane(sizeX, sizeZ, dig)
                 end
                 
                 -- Clean up hanging column
-                if z < 5 and mod_z > 0 and mod_z < 3 then
+                if sizeZ - z < 5 and mod_z > 0 and mod_z < 3 then
                     print(tempModZ)
                     if tempModZ == 0 then
                         turtle.digDown()
