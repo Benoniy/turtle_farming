@@ -74,6 +74,7 @@ function dig_plane(sizeX, sizeZ, dig)
                 
                 -- Clean up hanging column
                 if tempZ < 5 and mod_z > 0 and mod_z < 3 then
+                    print(tempModZ)
                     if tempModZ == 0 then
                         turtle.digDown()
                     else
@@ -167,4 +168,4 @@ end
 turtle.refuel( 64 )
 
 -- dig_plane(10, 10, true)
-dig_plane(10, 10, false)
+dig_plane(11, 11, true)
