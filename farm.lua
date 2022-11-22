@@ -62,9 +62,9 @@ function dig_plane(sizeX, sizeZ, dig)
         turtle.suckDown()
         print_pos()
         
-        if dig_last_x and up_coord == sixeX then
+        if dig_last_x and up_coord == sizeX then
             dig = true
-        elseif not dig_last_x and up_coord == sixeX then
+        elseif not dig_last_x and up_coord == sizeX then
             dig = false
         end
         
