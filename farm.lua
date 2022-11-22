@@ -102,7 +102,8 @@ function dig_plane(sizeX, sizeZ, dig)
             turtle.forward()
             up_coord = up_coord + 1
         else
-            turtle.forward() = up_coord + 1
+            turtle.forward() 
+            up_coord = up_coord + 1
         end
         
     end
