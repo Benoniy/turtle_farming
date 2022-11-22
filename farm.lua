@@ -145,51 +145,82 @@ end
 
 
 function recover_seeds(sizeX, sizeZ)
-
-    sizeX = sizeX - 1
+    up_coord = 1
+    right_coord = 1
+    
     sizeZ = sizeZ - 1
     reverse_dir = false
-    
     turtle.forward()
+    
     -- for every x column
     for x=1,sizeX do
     
         turtle.suckDown()
         turtle.suckDown()
-        
+        print_pos()
             
         if reverse_dir then
-            turtle.turnLeft()
+            makeTurnLeft()
         else
-            turtle.turnRight()
+            makeTurnRight()
         end
             
         -- travel the z row
         for z=1,sizeZ do
+            if (right_coord + 2) % 5 == 0 and dig then
+                turtle.digDown()
+            end  
+            
             turtle.suckDown()
             turtle.suckDown()
             turtle.forward()
+                
+            if reverse_dir then
+                right_coord = right_coord - 1
+            else
+                right_coord = right_coord + 1
+            end
+                
+                
+            print_pos()
         end
-                                      
+            
         -- turn to front
         if reverse_dir then
-            turtle.turnRight()
+            makeTurnRight()
             reverse_dir = false
         else
-            turtle.turnLeft()
+            makeTurnLeft()
             reverse_dir = true
         end
             
         turtle.forward()
-
+        up_coord = up_coord + 1
+    else
+        turtle.forward() 
+        up_coord = up_coord + 1
     end
-    
-    
-                
-    turtle.turnLeft()
-    turtle.turnLeft()
 end
+    
+    -- End at the correct point
+    if right_coord < sizeZ + 1 then
+        while orientation ~= 2 do
+            makeTurnRight()
+        end
+        while right_coord < (sizeZ + 1) do
+            turtle.forward()
+            right_coord = right_coord + 1
+        end
+        makeTurnLeft()
+    end
+      
+                    
+    makeTurnLeft()
+    makeTurnLeft()
+    -- recover_seeds(sizeX, sizeZ + 1)
+end
+
 turtle.refuel( 64 )
 
--- dig_plane(10, 10, true)
-dig_plane(11, 11, true)
+
+dig_plane(3, 5, true)
