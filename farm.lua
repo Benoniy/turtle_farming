@@ -1,6 +1,42 @@
-function dig_plane(sizeX, sizeZ, dig)
+local wireless = peripheral.find("modem")
 
+local right_coord = 0
+local up_coord = 0
+local orientation = 1
+
+-- 0 is left, 1 is forward, 2 is right and 3 is back
+function change_orientation(turn_dir)
+    if turnd_dir == 1 then
+        orientation = orientation + 1
+    elseif turnd_dir == -1
+        orientation = orientation - 1
+    end
+    if orientation > 3 then
+        orientation = 0
+    elseif orientation < 0
+        orientation = 3
+    end
+end
+
+function turn_left()
+    turtle.turnLeft()
+    change_orientation(-1)
+end
+
+function turn_right()
+    turtle.turnRight()
+    change_orientation(1)
+end
+
+
+function dig_plane(sizeX, sizeZ, dig)
     sizeZ = sizeZ - 1
+    
+    local mod_x = sizeX % 5
+    local mod_z = sizeZ % 5
+    
+
+    
     reverse_dir = false
     
     turtle.forward()
@@ -14,26 +50,49 @@ function dig_plane(sizeX, sizeZ, dig)
         
             
             if reverse_dir then
-                turtle.turnLeft()
+                turn_left()
             else
-                turtle.turnRight()
+                turn_right()
             end
             
             -- travel the z row
-            for z=1,sizeZ do
+            local tempZ = sizeZ
+            local tempModZ = mod_z
             
+            for z=1,sizeZ do
+
                 if (z + 2) % 5 == 0 and dig
                 then
                     turtle.digDown()
                 end
+                
+                -- Clean up hanging column
+                if tempZ < 5 and 3 < mod_z > 0 then
+                    if tempModZ == 0 then
+                        turtle.digDown()
+                    else
+                        tempModZ = tempModZ - 1
+                    end
+                end
+                    
+                    
                 turtle.suckDown()
                 turtle.suckDown()
                 turtle.forward()
+                
+                if reverse_dir then
+                    right_coord = right_coord - 1
+                else
+                    right_coord = right_coord + 1
+                end
+                
+                tempZ = tempZ - 1
+                modem.transmit(15, 43, "l="tostring(up_coord) + ", r=" + tostring(right_coord))
             end
             
             -- turn to front
             if reverse_dir then
-                turtle.turnRight()
+                turn_right()
                 reverse_dir = false
             else
                 turtle.turnLeft()
@@ -41,15 +100,16 @@ function dig_plane(sizeX, sizeZ, dig)
             end
             
             turtle.forward()
+            up_coord = up_coord + 1
         else
-            turtle.forward()
+            turtle.forward() = up_coord + 1
         end
         
     end
     
-    turtle.turnLeft()
-    turtle.turnLeft()
-    recover_seeds(sizeX, sizeZ + 1)
+    turn_left()
+    turn_left()
+    -- recover_seeds(sizeX, sizeZ + 1)
 end
 
 
@@ -96,7 +156,6 @@ function recover_seeds(sizeX, sizeZ)
     turtle.turnLeft()
     turtle.turnLeft()
 end
-
 turtle.refuel( 64 )
 
 -- dig_plane(10, 10, true)
