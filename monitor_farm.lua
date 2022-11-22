@@ -1,6 +1,6 @@
 local monitor = peripheral.find("monitor")
 local modem = peripheral.find("modem")
-local curs_y = 3
+local curs_y = 1
 modem.open(15)
 
 
@@ -15,7 +15,7 @@ while true do
     
     if curs_y == 15 then
         monitor.clear()
-        curs_y = 2
+        curs_y = 0
     end
     
     curs_y = curs_y + 1
