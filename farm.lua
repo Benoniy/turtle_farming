@@ -1,8 +1,8 @@
 local modem = peripheral.find("modem")
 modem.open(43)
 
-local right_coord = 0
-local up_coord = 0
+local right_coord = 1
+local up_coord = 1
 local orientation = 1
 
 function print_pos()
