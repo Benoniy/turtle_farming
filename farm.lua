@@ -1,8 +1,12 @@
 local modem = peripheral.find("modem")
 modem.open(43)
 
+
 local right_coord = 1
 local up_coord = 1
+local dig_last_x = false
+local dig_last_z = false
+
 local orientation = 1
 
 function print_pos()
@@ -37,15 +41,20 @@ end
 
 function dig_plane(sizeX, sizeZ, dig)
     sizeZ = sizeZ - 1
-    
-    local mod_x = sizeX % 5
-    local mod_z = sizeZ % 5
-    
-
-    
     reverse_dir = false
-    
     turtle.forward()
+    
+    local tempx = tonumber(string.sub(tostring(sizeX), -1))
+    local tempz = tonumber(string.sub(tostring(sizeZ + 1), -1))
+
+    if tempx == 1 or tempx == 2 or tempx == 6 or tempx == 7 then
+        dig_last_x = true
+    end
+    
+    if tempz == 1 or tempz == 2 or tempz == 6 or tempz == 7 then
+        dig_last_z = true
+    end 
+    
     -- for every x column
     for x=1,sizeX do
     
@@ -72,13 +81,8 @@ function dig_plane(sizeX, sizeZ, dig)
                 end
                 
                 -- Clean up hanging column
-                if sizeZ - z < 5 and mod_z > 0 and mod_z < 3 then
-                    print(tempModZ)
-                    if tempModZ == 0 then
-                        turtle.digDown()
-                    else
-                        tempModZ = tempModZ - 1
-                    end
+                if dig_last_z and right_coords == sizeZ
+                    turtle.digDown()
                 end
                     
                     
@@ -108,9 +112,11 @@ function dig_plane(sizeX, sizeZ, dig)
             
             turtle.forward()
             up_coord = up_coord + 1
+            vert_since_use = vert_since_use + 1
         else
             turtle.forward() 
             up_coord = up_coord + 1
+            vert_since_use = vert_since_use + 1
         end
         
     end
