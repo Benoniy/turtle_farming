@@ -75,13 +75,12 @@ function dig_plane(sizeX, sizeZ, dig)
             
             for z=1,sizeZ do
 
-                if (right_coord + 2) % 5 == 0 and dig
-                then
+                if (right_coord + 2) % 5 == 0 and dig then
                     turtle.digDown()
                 end
                 
                 -- Clean up hanging column
-                if dig_last_z and right_coords == sizeZ
+                if dig_last_z and right_coords == sizeZ then
                     turtle.digDown()
                 end
                     
