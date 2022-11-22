@@ -13,7 +13,7 @@ while true do
     event, side, channel, replyChannel, message, distance = os.pullEvent("modem_message")
     monitor.write(message .. "\n")
     
-    if curs_y == 18 then
+    if curs_y == 15 then
         monitor.clear()
         curs_y = 0
     end
