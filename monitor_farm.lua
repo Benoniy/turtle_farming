@@ -2,7 +2,7 @@ local monitor = peripheral.find("monitor")
 local modem = peripheral.find("modem")
 modem.open(15)
 
-
+monitor.clear()
 local event, side, channel, replyChannel, message, distance
 while true do
     event, side, channel, replyChannel, message, distance = os.pullEvent("modem_message")
