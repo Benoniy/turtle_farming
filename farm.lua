@@ -48,7 +48,9 @@ function dig_plane(sizeX, sizeZ, dig)
     local tempz = tonumber(string.sub(tostring(sizeZ + 1), -1))
 
     if tempx == 1 or tempx == 2 or tempx == 6 or tempx == 7 then
-        dig_last_x = true
+        if sizeX > 6 then
+            dig_last_x = true
+        end
     end
     
     if tempz == 1 or tempz == 2 or tempz == 6 or tempz == 7 then
