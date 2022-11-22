@@ -12,6 +12,7 @@ end
 
 -- 0 is left, 1 is forward, 2 is right and 3 is back
 function change_orientation(turn_dir)
+    print(turn_dir)
     if turn_dir == 1 then
         orientation = orientation + 1
     elseif turn_dir == -1 then
@@ -102,7 +103,7 @@ function dig_plane(sizeX, sizeZ, dig)
                 turn_right()
                 reverse_dir = false
             else
-                turtle.turnLeft()
+                turn_left()
                 reverse_dir = true
             end
             
