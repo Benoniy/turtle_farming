@@ -193,11 +193,7 @@ function recover_seeds(sizeX, sizeZ)
             
         turtle.forward()
         up_coord = up_coord + 1
-    else
-        turtle.forward() 
-        up_coord = up_coord + 1
     end
-end
     
     -- End at the correct point
     if right_coord < sizeZ + 1 then
@@ -210,7 +206,6 @@ end
         end
         makeTurnLeft()
     end
-      
                     
     makeTurnLeft()
     makeTurnLeft()
