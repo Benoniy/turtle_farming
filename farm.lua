@@ -47,13 +47,15 @@ function dig_plane(sizeX, sizeZ, dig)
     local tempx = tonumber(string.sub(tostring(sizeX), -1))
     local tempz = tonumber(string.sub(tostring(sizeZ + 1), -1))
 
-    if tempx == 1 or tempx == 2 or tempx == 6 or tempx == 7 then
+    -- Harvest the last row if there is crops left there
+    if tempx == 1 or tempx == 2 or tempx == 6 or tempx == 7 or sizeX < 4 then
         dig_last_x = true
     end
-    
-    if tempz == 1 or tempz == 2 or tempz == 6 or tempz == 7 then
+    if tempz == 1 or tempz == 2 or tempz == 6 or tempz == 7 or sizeZ + 1 < 4 then
         dig_last_z = true
     end 
+
+     
     
     -- for every x column
     for x=1,sizeX do
