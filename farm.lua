@@ -140,7 +140,7 @@ function dig_plane(sizeX, sizeZ, dig)
                     
     makeTurnLeft()
     makeTurnLeft()
-    -- recover_seeds(sizeX, sizeZ + 1)
+    recover_seeds(sizeX, sizeZ + 1)
 end
 
 
@@ -212,7 +212,6 @@ function recover_seeds(sizeX, sizeZ)
                     
     makeTurnLeft()
     makeTurnLeft()
-    -- recover_seeds(sizeX, sizeZ + 1)
 end
 
 turtle.refuel( 64 )
