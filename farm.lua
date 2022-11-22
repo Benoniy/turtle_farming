@@ -8,12 +8,12 @@ local orientation = 1
 function change_orientation(turn_dir)
     if turnd_dir == 1 then
         orientation = orientation + 1
-    elseif turnd_dir == -1
+    elseif turnd_dir == -1 then
         orientation = orientation - 1
     end
     if orientation > 3 then
         orientation = 0
-    elseif orientation < 0
+    elseif orientation < 0 then
         orientation = 3
     end
 end
