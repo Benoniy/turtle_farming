@@ -48,6 +48,7 @@ function dig_plane(sizeX, sizeZ, dig)
     local tempz = tonumber(string.sub(tostring(sizeZ + 1), -1))
 
     if tempx == 1 or tempx == 2 or tempx == 6 or tempx == 7 then
+        if not 
         dig_last_x = true
     end
     
@@ -121,9 +122,21 @@ function dig_plane(sizeX, sizeZ, dig)
             turtle.forward() 
             up_coord = up_coord + 1
         end
-        
     end
     
+    -- End at the correct point
+    if right_coord < sizeZ + 1 then
+        while orientation ~= 2 do
+            makeTurnRight()
+        end
+        while right_coord < (sizeZ + 1) do
+            turtle.forward()
+            right_coord = right_coord + 1
+        end
+        makeTurnLeft()
+    end
+      
+                    
     makeTurnLeft()
     makeTurnLeft()
     -- recover_seeds(sizeX, sizeZ + 1)
@@ -170,6 +183,8 @@ function recover_seeds(sizeX, sizeZ)
 
     end
     
+    
+                
     turtle.turnLeft()
     turtle.turnLeft()
 end
