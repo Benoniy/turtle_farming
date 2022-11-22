@@ -89,7 +89,7 @@ function dig_plane(sizeX, sizeZ, dig)
                 
                 tempZ = tempZ - 1
                 
-                local message = "x= " + tostring(up_coord) + ", y=" + tostring(right_coord) + ", r=" + tostring(orientation)
+                local message = "x= " .. tostring(up_coord) .. ", y=" .. tostring(right_coord) .. ", r=" + tostring(orientation)
                 modem.transmit(15, 43, message)
             end
             
